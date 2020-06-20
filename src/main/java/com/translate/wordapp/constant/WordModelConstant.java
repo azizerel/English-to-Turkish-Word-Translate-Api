@@ -1,4 +1,4 @@
-package constant;
+package com.translate.wordapp.constant;
 
 /**
  * created by Abdulaziz Erel on 22:53 09.06.2020
