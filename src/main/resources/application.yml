@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: wordApp
+  jpa:
+    database: postgresql
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: 'postgres'
+    password: '123456'
+    driver-class-name: org.postgresql.Driver
+    initialization-mode: always
+    data: classpath:data2.sql
+server:
+  port: 6969
