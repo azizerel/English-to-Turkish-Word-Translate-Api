@@ -1,6 +1,6 @@
-package entity;
+package com.translate.wordapp.entity;
 
-import constant.BaseModelConstant;
+import com.translate.wordapp.constant.BaseModelConstant;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 
