@@ -1,34 +1,38 @@
-package entity;
+package com.translate.wordapp.model;
 
-import com.sun.istack.NotNull;
-import constant.WordModelConstant;
+import com.translate.wordapp.constant.WordModelConstant;
+import org.springframework.validation.annotation.Validated;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
+import java.util.Set;
 
 /**
- * created by Abdulaziz Erel on 22:35 09.06.2020
+ * created by Abdulaziz Erel on 23:36 09.06.2020
  **/
-@Entity
-@Table(name = WordModelConstant.TABLE_NAME)
-public class WordEntity extends BaseEntity {
+@Validated
+public class WordModel extends BaseModel{
 
     @NotNull
-    @Column(name = "ENGLISH_WORD")
     @Size(max = WordModelConstant.ENG_WORD_MAX, min = WordModelConstant.ENG_WORD_MIN)
     private String englishWord;
 
     @NotNull
-    @Column(name = "TURKISH_WORD")
     @Size(max = WordModelConstant.TR_WORD_MAX, min = WordModelConstant.TR_WORD_MIN)
     private String turkishWord;
 
-    @Column(name = "PRONUNCIATION")
     @Size(max = WordModelConstant.PRON_WORD_MAX, min = WordModelConstant.PRON_WORD_MIN)
     private String pronunciation;
+
+    private Set<SentenceModel> sentenceList;
+
+    public Set<SentenceModel> getSentenceList() {
+        return sentenceList;
+    }
+
+    public void setSentenceList(Set<SentenceModel> sentenceList) {
+        this.sentenceList = sentenceList;
+    }
 
     public String getEnglishWord() {
         return englishWord;
