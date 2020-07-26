@@ -17,6 +17,8 @@ spring:
     password: '123456'
     driver-class-name: org.postgresql.Driver
     initialization-mode: always
+    data: classpath:data5.sql
 
 server:
   port: 6969
+
