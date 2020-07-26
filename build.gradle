@@ -1,7 +1,22 @@
+buildscript {
+    ext {
+        springBootVersion = '2.1.3.RELEASE'
+        queryDslVersion = '4.2.1'
+    }
+}
+
 plugins {
     id 'org.springframework.boot' version '2.3.0.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'java'
+    id 'idea'
+}
+
+idea {
+    module {
+        sourceDirs += file('src/main/generated/aa')
+        generatedSourceDirs += file('src/main/generated/aa')
+    }
 }
 
 group = 'com.translate'
@@ -13,6 +28,10 @@ repositories {
 }
 
 dependencies {
+
+    compile 'io.springfox:springfox-swagger2:2.9.2'
+    compile 'io.springfox:springfox-swagger-ui:2.9.2'
+
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     compile group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
@@ -21,8 +40,14 @@ dependencies {
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
-}
+    // QueryDSL
+    compile "com.querydsl:querydsl-jpa:${queryDslVersion}"
+    annotationProcessor("com.querydsl:querydsl-apt:${queryDslVersion}:jpa")
 
-test {
-    useJUnitPlatform()
+    // Lombok
+    annotationProcessor("org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}")
+
+    //log
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.13.3'
+
 }
